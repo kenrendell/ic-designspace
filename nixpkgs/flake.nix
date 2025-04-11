@@ -43,12 +43,10 @@
             trilinos-mpi
             ghdl
             iverilog
-            gaw
             gtkwave
             gnuplot
             magic-vlsi
             klayout
-            xcircuit
             qucs-s
             kicad
             fritzing
@@ -58,6 +56,10 @@
             yosys
             openroad
             openems
+
+            # Other EDA tools (failed installs)
+            #gaw
+            #xcircuit
 
             # Terminal
             xterm
