@@ -8,7 +8,7 @@
 
 cd "${0%/*}/.." || exit 1
 
-command mkdir ./.tmp || exit 1
+command mkdir -p ./.tmp || exit 1
 
 REPO_DIR='./.tmp/OpenVAF'
 
@@ -19,4 +19,4 @@ echo "${LLVM_CONFIG}"
 echo yeah
 
 # Build OpenVAF
-cd "${REPO_DIR}" && LLVM_CONFIG="$(which llvm-config)" build --release --bin openvaf
+cd "${REPO_DIR}" && LLVM_CONFIG="$(which llvm-config)" cargo build --release --bin openvaf
