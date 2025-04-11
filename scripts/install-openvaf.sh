@@ -19,4 +19,4 @@ echo "${LLVM_CONFIG}"
 echo yeah
 
 # Build OpenVAF
-cd "${REPO_DIR}" && LLVM_CONFIG="$(which llvm-config)" cargo build --release --bin openvaf
+cd "${REPO_DIR}" && LLVM_CONFIG="$(which llvm-config)" cargo build --release --bin openvaf-r
