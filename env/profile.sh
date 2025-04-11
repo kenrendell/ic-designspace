@@ -30,7 +30,7 @@ PATH="$(prepend_envv PATH "${HOME}/.local/bin")" || return 1
 export PATH
 
 # Additional XDG directory to search for data files.
-XDG_DATA_DIRS="$(append_envv XDG_DATA_DIRS "${XDG_STATE_HOME}/nix/profile/share")" || return 1
+XDG_DATA_DIRS="$(prepend_envv XDG_DATA_DIRS "${XDG_STATE_HOME}/nix/profile/share")" || return 1
 export XDG_DATA_DIRS
 
 # PDK environment
