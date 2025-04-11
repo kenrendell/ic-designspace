@@ -38,10 +38,10 @@ Source/execute `env/profile.sh` to initialize the required environment variables
 
 ``` sh
 # For bash users
-echo '. "${HOME}/ic-designspace-installer/env/profile.sh"' >> "${HOME}/.bashrc"
+printf '\n. "${HOME}/ic-designspace-installer/env/profile.sh"\n' >> "${HOME}/.bashrc"
 
 # For zsh users
-echo '. "${HOME}/ic-designspace-installer/env/profile.sh"' >> "${ZDOTDIR:-"${HOME}"}/.zshrc"
+printf '\n. "${HOME}/ic-designspace-installer/env/profile.sh"\n' >> "${ZDOTDIR:-"${HOME}"}/.zshrc"
 ```
 
 ### Install Nix Packages
