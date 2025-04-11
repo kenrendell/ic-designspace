@@ -1,5 +1,5 @@
 #!/usr/bin/env nix
-#! nix shell github:NixOS/nixpkgs/nixpkgs-unstable#llvmPackages_18.libllvm github:NixOS/nixpkgs/nixpkgs-unstable#llvmPackages_18.clangUseLLVM github:NixOS/nixpkgs/nixpkgs-unstable#cowsay --command bash
+#! nix shell github:NixOS/nixpkgs/nixpkgs-unstable#llvmPackages_18.libllvm github:NixOS/nixpkgs/nixpkgs-unstable#llvmPackages_18.clangUseLLVM github:NixOS/nixpkgs/nixpkgs-unstable#rustup github:NixOS/nixpkgs/nixpkgs-unstable#bash --command bash
 #
 # Build dependencies (github:NixOS/nixpkgs/nixpkgs-unstable):
 # - llvmPackages_18.libllvm
