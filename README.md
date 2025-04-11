@@ -28,9 +28,9 @@ sudo -i nix upgrade-nix
 Clone the repository (for other users, use `https`).
 
 ``` sh
-git clone git@github.com:kenrendell/ic-designspace-installer.git "${HOME}"
+git clone git@github.com:kenrendell/ic-designspace-installer.git "${HOME}/ic-designspace-installer"
 # or
-git clone https://github.com/kenrendell/ic-designspace-installer.git "${HOME}"
+git clone https://github.com/kenrendell/ic-designspace-installer.git "${HOME}/ic-designspace-installer"
 ```
 
 Source/execute `env/profile.sh` to initialize the required environment variables and aliases.
