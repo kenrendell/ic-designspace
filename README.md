@@ -37,12 +37,10 @@ git clone https://github.com/kenrendell/ic-designspace-installer.git "${HOME}/ic
 Source/execute `env/profile.sh` to initialize the required environment variables and aliases.
 
 ``` sh
-# For bash users
-printf '\n. "${HOME}/ic-designspace-installer/env/profile.sh"\n' >> "${HOME}/.bashrc"
-
-# For zsh users
-printf '\n. "${HOME}/ic-designspace-installer/env/profile.sh"\n' >> "${ZDOTDIR:-"${HOME}"}/.zshrc"
+"${HOME}/ic-designspace-installer/scripts/setup-env.sh"
 ```
+
+Check the contents of shell rc file (`.bashrc` or `.zshrc`). Then, restart the current shell session by logging out and logging in.
 
 ### Install Nix Packages
 
