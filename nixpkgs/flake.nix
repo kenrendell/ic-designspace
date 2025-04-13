@@ -66,11 +66,6 @@
             foot
             neovim
 
-            # Build dependencies for OpenVAF/OpenVAR-Reloaded
-            llvmPackages_18.clangUseLLVM
-            llvmPackages_18.libllvm
-            rustup
-
             # Distributed computing
             #mpi
 
