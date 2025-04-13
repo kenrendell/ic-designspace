@@ -1,7 +1,9 @@
 #!/usr/bin/env nix-shell
 #! nix-shell -i bash
-#! nix-shell -p cmake ninja bash
+#! nix-shell -p cmake ninja zlib python3Minimal bash
 #! nix-shell -I nixpkgs=channel:nixpkgs-unstable
+
+# For software requirements, see https://llvm.org/docs/GettingStarted.html#software
 
 # Usage: install-llvm.sh <LLVM-tag> <LLVM-projects> <override-install>
 
@@ -18,8 +20,9 @@ if [ -n "${3}" ] || ! { [ -f "${LLVM_CONFIG}" ] && [ -x "${LLVM_CONFIG}" ]; }; t
 	{ command rm -rf "${REPO_DIR}" && \
 	git clone --depth 1 --branch "${1}" --single-branch https://github.com/llvm/llvm-project.git "${REPO_DIR}"; } || exit 1
 
-	# Build LLVM
-	{ cd "${REPO_DIR}" && cmake -G Ninja -S llvm -B build -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}" -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -DLLVM_ENABLE_PROJECTS="${2}"; } || exit 1
+	# See https://llvm.org/docs/CMake.html
+	{ cd "${REPO_DIR}" && cmake -G Ninja -S llvm -B build -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}" -DCMAKE_BUILD_TYPE=Release \
+		-DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -DLLVM_ENABLE_ZLIB=FORCE_ON -DLLVM_ENABLE_PROJECTS="${2}"; } || exit 1
 	{ ninja -C build && ninja -C build install; } || exit 1
 fi
 
