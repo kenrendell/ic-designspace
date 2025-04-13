@@ -13,7 +13,7 @@ REPO_DIR="$(pwd)/tmp/llvm-project" || exit 1
 INSTALL_DIR="${REPO_DIR}/LLVM"
 
 { command rm -rf "${REPO_DIR}" && \
-git clone https://github.com/llvm/llvm-project.git "${REPO_DIR}" && git checkout "${1}"; } || exit 1
+git clone --depth 1 --branch "${1}" --single-branch https://github.com/llvm/llvm-project.git "${REPO_DIR}"; } || exit 1
 
 # Build LLVM
 { cd "${REPO_DIR}" && cmake -G Ninja -S llvm -B build -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}" -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -DLLVM_ENABLE_PROJECTS="${2}"; } || exit 1
