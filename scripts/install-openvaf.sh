@@ -6,7 +6,9 @@
 # Usage: install-openvaf.sh <override-LLVM-install>
 
 LLVM_TAG='llvmorg-15.0.7' # see https://github.com/llvm/llvm-project/tags
-LLVM_PROJECTS='llvm;clang;lld' # see https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm
+
+# See https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm
+LLVM_PROJECTS='llvm;clang;lld' # semicolon-separated list of LLVM projects to build
 
 cd "${0%/*}/.." || exit 1
 

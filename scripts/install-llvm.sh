@@ -1,6 +1,6 @@
 #!/usr/bin/env nix-shell
 #! nix-shell -i bash
-#! nix-shell -p cmake ninja zlib python3Minimal bash
+#! nix-shell -p cmake ninja zlib zstd python3Minimal bash
 #! nix-shell -I nixpkgs=channel:nixpkgs-unstable
 
 # For software requirements, see https://llvm.org/docs/GettingStarted.html#software
@@ -22,7 +22,8 @@ if [ -n "${3}" ] || ! { [ -f "${LLVM_CONFIG}" ] && [ -x "${LLVM_CONFIG}" ]; }; t
 
 	# See https://llvm.org/docs/CMake.html
 	{ cd "${REPO_DIR}" && cmake -G Ninja -S llvm -B build -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}" -DCMAKE_BUILD_TYPE=Release \
-		-DLLVM_TARGETS_TO_BUILD='X86;ARM;AArch64' -DLLVM_ENABLE_ZLIB=FORCE_ON -DLLVM_ENABLE_PROJECTS="${2}"; } || exit 1
+		-DLLVM_STATIC_LINK_CXX_STDLIB=ON -DLLVM_ENABLE_ZLIB=FORCE_ON -DLLVM_ENABLE_ZSTD=FORCE_ON \
+		-DLLVM_TARGETS_TO_BUILD=Native -DLLVM_ENABLE_PROJECTS="${2}"; } || exit 1
 	{ ninja -C build && ninja -C build install; } || exit 1
 fi
 
