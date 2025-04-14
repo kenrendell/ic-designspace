@@ -1,9 +1,6 @@
-#!/usr/bin/env nix-shell
-#! nix-shell -i bash
-#! nix-shell -p rustup bash
-#! nix-shell -I nixpkgs=channel:nixpkgs-unstable
-
+#!/bin/sh
 # Usage: install-openvaf.sh <override-LLVM-install>
+# See https://github.com/arpadbuermen/OpenVAF
 
 LLVM_TAG='llvmorg-15.0.7' # see https://github.com/llvm/llvm-project/tags
 
@@ -12,10 +9,10 @@ LLVM_PROJECTS='llvm;clang;lld' # semicolon-separated list of LLVM projects to bu
 
 cd "${0%/*}/.." || exit 1
 
-command mkdir -p tmp || exit 1
-
 REPO_DIR="$(pwd)/tmp/OpenVAF" || exit 1
 LLVM_ENV="${REPO_DIR%/*}/llvm.env"
+
+command mkdir -p "${REPO_DIR%/*}" || exit 1
 
 # Build LLVM and Clang
 ./scripts/install-llvm.sh "${LLVM_TAG}" "${LLVM_PROJECTS}" "${1}" || exit 1

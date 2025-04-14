@@ -72,6 +72,14 @@
             # Octave
             octave
             #octaveFull
+
+            # Build tools
+            cmake
+            ninja
+            zlib
+            zstd
+            rustup
+            python3Minimal
           ];
         };
       });
