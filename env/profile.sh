@@ -9,16 +9,19 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 . "${ICD_DIR}/env/functions.sh"
 
 # Additional binaries
-PATH="$(prepend_envv PATH "${XDG_STATE_HOME}/nix/profile/bin")" || return 1
-PATH="$(prepend_envv PATH "${HOME}/.local/bin")" || return 1
+prepend_envv PATH '/nix/var/nix/profiles/default/bin' || return 1
+prepend_envv PATH "${XDG_STATE_HOME}/nix/profile/bin" || return 1
+prepend_envv PATH "${HOME}/.local/bin" || return 1
 export PATH
 
 # Additional data files
-XDG_DATA_DIRS="$(prepend_envv XDG_DATA_DIRS "${XDG_STATE_HOME}/nix/profile/share")" || return 1
+prepend_envv XDG_DATA_DIRS '/nix/var/nix/profiles/default/share' || return 1
+prepend_envv XDG_DATA_DIRS "${XDG_STATE_HOME}/nix/profile/share" || return 1
 export XDG_DATA_DIRS
 
 # Additional libraries
-LD_LIBRARY_PATH="$(prepend_envv LD_LIBRARY_PATH "${XDG_STATE_HOME}/nix/profile/lib")" || return 1
+prepend_envv LD_LIBRARY_PATH '/nix/var/nix/profiles/default/lib' || return 1
+prepend_envv LD_LIBRARY_PATH "${XDG_STATE_HOME}/nix/profile/lib" || return 1
 export LD_LIBRARY_PATH
 
 # PDK environment

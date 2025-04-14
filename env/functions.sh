@@ -4,7 +4,8 @@
 prepend_envv () {
 	{ [ -n "$2" ] && [ "$2" = "${2#*:}" ]; } || { printf "No ':' character is allowed!\n"; return 1; }
 
-	envv="$(printenv "$1")" || { printf "No environment variable %s exists!\n" "$1"; return 1; }
+	# Extract the value from the variable
+	envv="$(eval printf "'%s'" '"${'"${1}"'}"')" || return 1
 
 	# Remove redundant colons ':'
 	while [ "${envv#*::}" != "${envv}" ]; do
@@ -20,9 +21,10 @@ prepend_envv () {
 			{ [ -n "${rpath}" ] && envv=":${rpath}"; } || envv=
 			[ -n "${lpath}" ] && envv=":${lpath}${envv}"
 
-			envv="${2}${envv}";;
-		(*) envv="${2}:${envv}";;
+			envv="${2}${envv}" ;;
+		(*) envv="${2}$(test -n "${envv}" && printf ':')${envv}" ;;
 	esac;
 
-	printf '%s\n' "${envv}"
+	# Assign the resulting value
+	eval "${1}='${envv}'"
 }
