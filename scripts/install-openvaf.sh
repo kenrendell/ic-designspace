@@ -2,6 +2,9 @@
 # Usage: install-openvaf.sh <override-LLVM-install>
 # See https://github.com/arpadbuermen/OpenVAF
 
+# NOTE: use `patchelf`
+# See https://github.com/NixOS/patchelf
+
 LLVM_TAG='llvmorg-15.0.7' # see https://github.com/llvm/llvm-project/tags
 
 # See https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm

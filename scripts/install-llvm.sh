@@ -2,6 +2,9 @@
 # Usage: install-llvm.sh <LLVM-tag> <LLVM-projects> <override-install>
 # For software requirements, see https://llvm.org/docs/GettingStarted.html#software
 
+# NOTE: use `patchelf`
+# See https://github.com/NixOS/patchelf
+
 cd "${0%/*}/.." || exit 1
 
 REPO_DIR="$(pwd)/tmp/llvm-project" || exit 1
